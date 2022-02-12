@@ -1,10 +1,21 @@
 package BookVendingMachine;
 
-public class Antiquarian extends Book
+public class Antiquarian
 {
-	public void newBook(String title, String author, int pages)
+	private Book book = new Book();
+	public void addNewBook(String title, String author, int pages)
 	{
-		this.setTitle(title);
+		this.book.setTitle(title);
+		this.book.setAuthor(author);
+		this.book.setPages(pages);
+		this.book.incrementId();
 	}
-
+	public void registerBook()
+	{
+		
+	}
+	public void removeBook()
+	{
+		
+	}
 }

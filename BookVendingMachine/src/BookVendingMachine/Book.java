@@ -2,7 +2,7 @@ package BookVendingMachine;
 
 public class Book 
 {
-	private int id = 0;
+	private static int id = 0;
 	private String title;
 	private String author;
 	private int pages;
@@ -30,5 +30,13 @@ public class Book
 	public int getPages()
 	{
 		return this.pages;
+	}
+	public void incrementId()
+	{
+		Book.id++;
+	}
+	public int getId()
+	{
+		return Book.id;
 	}
 }
