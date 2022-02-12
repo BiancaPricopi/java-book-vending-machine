@@ -9,8 +9,9 @@ public class Antiquarian
 		this.book.setAuthor(author);
 		this.book.setPages(pages);
 		this.book.incrementId();
+		registerBook();
 	}
-	public void registerBook()
+	private void registerBook()
 	{
 		
 	}
