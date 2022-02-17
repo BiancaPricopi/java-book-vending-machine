@@ -22,7 +22,7 @@ public class Antiquarian
 			inventory.write("#" + this.book.getId() + "#");
 			inventory.write(this.book.getTitle() + "#");
 			inventory.write(this.book.getAuthor() + "#");
-			inventory.write(this.book.getPages() + "#");
+			inventory.write(this.book.getPages() + "#\n");
 			
 			inventory.close();
 		}
