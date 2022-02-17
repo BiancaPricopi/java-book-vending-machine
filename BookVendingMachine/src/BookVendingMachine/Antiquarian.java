@@ -1,4 +1,6 @@
 package BookVendingMachine;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Antiquarian
 {
@@ -13,7 +15,21 @@ public class Antiquarian
 	}
 	private void registerBook()
 	{
-		
+		try
+		{
+			FileWriter file = new FileWriter("BookInventory.txt", true);
+			BufferedWriter inventory = new BufferedWriter(file);
+			inventory.write("#" + this.book.getId() + "#");
+			inventory.write(this.book.getTitle() + "#");
+			inventory.write(this.book.getAuthor() + "#");
+			inventory.write(this.book.getPages() + "#");
+			
+			inventory.close();
+		}
+		catch(Exception error)
+		{
+			return;
+		}	
 	}
 	public void removeBook()
 	{
