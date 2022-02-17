@@ -13,6 +13,14 @@ public class Main
 		AddBook antiquarianAddBook = new AddBook(antiquarian, book1);
 		AntiquarianButton antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
+		
+		Book book2 = new Book();
+		book2.setTitle("Padurea Norvegiana");
+		book2.setAuthor("Haruki Murakami");
+		book2.setPages(360);
+		antiquarianAddBook = new AddBook(antiquarian, book2);
+		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
+		antiquarianButton.press();
 
 	}
 
