@@ -34,6 +34,29 @@ public class Antiquarian
 			return;
 		}	
 	}
+	private void copyFile()
+	{
+		try
+		{
+			BufferedWriter copy = new BufferedWriter(
+					new FileWriter("BookInventory.txt"));
+			BufferedReader br = new BufferedReader(
+					new FileReader("temporaryInventory.txt"));
+			String row;
+			System.out.println("el");
+			while((row = br.readLine()) != null)
+			{
+				System.out.println(row);
+				copy.write(row + "\n");
+			}
+			br.close();
+			copy.close();
+		}
+		catch(Exception error)
+		{
+			System.out.println(error.getMessage());
+		}
+	}
 	public void removeBook()
 	{
 		try
@@ -48,21 +71,13 @@ public class Antiquarian
 			bookCoded = bookCoded.concat("#");
 			bookCoded = bookCoded.concat(Integer.toString(this.book.getPages()));
 			String row;
-			/*while((row = inventory.readLine()) != null)
-			{
-				String bookInfo[] = row.split("#"); 
-				for (int i = 0; i < bookInfo.length; i++) 
-				{
-					 System.out.println(bookInfo[i]);
-				}
-			}*/
 			boolean flag = true;
 			while(flag == true && (row = inventory.readLine()) != null)
 			{
 				if(row.equals(bookCoded) == true)
 				{
 					File inputFile = new File("BookInventory.txt");
-					File tempFile = new File("temporaryInvetory.txt");
+					File tempFile = new File("temporaryInventory.txt");
 
 					BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 					BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -82,19 +97,11 @@ public class Antiquarian
 					}
 					writer.close(); 
 					reader.close();
-					boolean successful = tempFile.renameTo(inputFile);
-					if(successful == true)
-					{
-						System.out.println("Book remvoed successfully.");
-					}
-					else
-					{
-						System.out.println("An error accured. Book was not removed.");
-					}
+					inventory.close();
+					copyFile();
 					flag = false;
 				}
 			}
-			
 			inventory.close();
 		}
 		catch(Exception error)
