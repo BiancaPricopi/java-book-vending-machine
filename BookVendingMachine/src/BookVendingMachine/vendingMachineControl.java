@@ -2,11 +2,11 @@ package BookVendingMachine;
 
 public class vendingMachineControl 
 {
-	public Antiquarian getAntiquarian()
+	public static Antiquarian getAntiquarian()
 	{
 		return new Antiquarian();
 	}
-	public Reader getReader()
+	public static Reader getReader()
 	{
 		return new Reader();
 	}
