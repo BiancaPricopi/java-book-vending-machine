@@ -1,8 +1,10 @@
 package BookVendingMachine;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class Main 
 {
-
 	public static void main(String[] args)
 	{
 		Antiquarian antiquarian = new Antiquarian();
@@ -21,11 +23,24 @@ public class Main
 		antiquarianAddBook = new AddBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
+		antiquarianButton.press();
 		
 		RemoveBook antiquarianRemoveBook = new RemoveBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianRemoveBook);
 		antiquarianButton.press();
+		
+		//delete();
 
 	}
-
+	public static void delete()
+	{
+		try 
+		{
+            Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\BookInventory.txt"));
+        }
+        catch (Exception error) 
+		{
+            System.out.println(error.getMessage());
+        }
+	}
 }

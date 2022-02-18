@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Antiquarian
 {
@@ -43,14 +45,22 @@ public class Antiquarian
 			BufferedReader br = new BufferedReader(
 					new FileReader("temporaryInventory.txt"));
 			String row;
-			System.out.println("el");
 			while((row = br.readLine()) != null)
 			{
-				System.out.println(row);
 				copy.write(row + "\n");
 			}
 			br.close();
 			copy.close();
+			try 
+			{
+	            Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\temporaryInventory.txt"));
+	        }
+	        catch (Exception error) 
+			{
+	            System.out.println(error.getMessage());
+	        }
+	 
+	        System.out.println("Deletion successful.");
 		}
 		catch(Exception error)
 		{
