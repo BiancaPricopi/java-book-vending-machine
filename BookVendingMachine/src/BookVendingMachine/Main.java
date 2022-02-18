@@ -12,6 +12,7 @@ public class Main
 		book1.setTitle("Cronica pasarii arc");
 		book1.setAuthor("Haruki Murakami");
 		book1.setPages(688);
+		book1.setId(1);
 		AddBook antiquarianAddBook = new AddBook(antiquarian, book1);
 		AntiquarianButton antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
@@ -20,6 +21,7 @@ public class Main
 		book2.setTitle("Padurea Norvegiana");
 		book2.setAuthor("Haruki Murakami");
 		book2.setPages(360);
+		book2.setId(2);
 		antiquarianAddBook = new AddBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();

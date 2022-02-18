@@ -12,6 +12,6 @@ public class AddBook implements AntiquarianCommand
 	@Override
 	public void execute()
 	{
-		this.antiquarian.addNewBook(this.book.getTitle(), this.book.getAuthor(), this.book.getPages());
+		this.antiquarian.addNewBook(this.book.getId(), this.book.getTitle(), this.book.getAuthor(), this.book.getPages());
 	}
 }

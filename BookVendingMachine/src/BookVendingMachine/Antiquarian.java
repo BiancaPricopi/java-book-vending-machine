@@ -10,12 +10,12 @@ import java.nio.file.Paths;
 public class Antiquarian
 {
 	private Book book = new Book();
-	public void addNewBook(String title, String author, int pages)
+	public void addNewBook(int id, String title, String author, int pages)
 	{
 		this.book.setTitle(title);
 		this.book.setAuthor(author);
 		this.book.setPages(pages);
-		this.book.incrementId();
+		this.book.setId(id);
 		registerBook();
 	}
 	private void registerBook()
