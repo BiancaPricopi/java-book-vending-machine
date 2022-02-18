@@ -7,6 +7,7 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		delete();
 		Antiquarian antiquarian = new Antiquarian();
 		Book book1 = new Book();
 		book1.setTitle("Cronica pasarii arc");
@@ -41,8 +42,14 @@ public class Main
 		ReaderButton readerButton = new ReaderButton(readerBorrowBook);
 		readerButton.press();
 		
-		
-		//delete();
+		Book padureaNorvegiana = new Book();
+		padureaNorvegiana.setTitle("Padurea Norvegiana");
+		padureaNorvegiana.setAuthor("Haruki Murakami");
+		padureaNorvegiana.setPages(360);
+		padureaNorvegiana.setId(2);
+		readerBorrowBook = new Borrow(reader, padureaNorvegiana);
+		readerButton = new ReaderButton(readerBorrowBook);
+		readerButton.press();
 
 	}
 	public static void delete()
