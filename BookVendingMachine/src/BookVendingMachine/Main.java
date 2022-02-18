@@ -21,6 +21,10 @@ public class Main
 		antiquarianAddBook = new AddBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
+		
+		RemoveBook antiquarianRemoveBook = new RemoveBook(antiquarian, book2);
+		antiquarianButton = new AntiquarianButton(antiquarianRemoveBook);
+		antiquarianButton.press();
 
 	}
 
