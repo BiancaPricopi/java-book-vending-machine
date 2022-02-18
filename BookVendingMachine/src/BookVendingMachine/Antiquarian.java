@@ -67,8 +67,9 @@ public class Antiquarian
 			System.out.println(error.getMessage());
 		}
 	}
-	public void removeBook()
+	public void removeBook(Book bookToRemove)
 	{
+		this.book = bookToRemove;
 		try
 		{
 			FileReader file = new FileReader("BookInventory.txt");

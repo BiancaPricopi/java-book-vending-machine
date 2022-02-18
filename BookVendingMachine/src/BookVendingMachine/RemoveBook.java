@@ -12,7 +12,7 @@ public class RemoveBook implements AntiquarianCommand
 	@Override
 	public void execute()
 	{
-		this.antiquarian.removeBook();
+		this.antiquarian.removeBook(this.book);
 	}
 
 }
