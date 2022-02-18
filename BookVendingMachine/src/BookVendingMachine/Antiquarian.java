@@ -60,7 +60,7 @@ public class Antiquarian
 	            System.out.println(error.getMessage());
 	        }
 	 
-	        System.out.println("Deletion successful.");
+	        System.out.println("[Antiquarian] Deletion successful.");
 		}
 		catch(Exception error)
 		{
