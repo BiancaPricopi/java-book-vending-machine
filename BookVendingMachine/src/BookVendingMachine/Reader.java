@@ -40,13 +40,7 @@ public class Reader
 		{
 			FileReader file = new FileReader("BookInventory.txt");
 			BufferedReader inventory = new BufferedReader(file);
-			String bookCoded = Integer.toString(searchedBook.getId());
-			bookCoded = bookCoded.concat("#");
-			bookCoded = bookCoded.concat(searchedBook.getTitle());
-			bookCoded = bookCoded.concat("#");
-			bookCoded = bookCoded.concat(searchedBook.getAuthor());
-			bookCoded = bookCoded.concat("#");
-			bookCoded = bookCoded.concat(Integer.toString(searchedBook.getPages()));
+			String bookCoded = this.makeRowForFile(searchedBook);
 			String row;
 			while((row = inventory.readLine()) != null)
 			{
