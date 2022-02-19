@@ -2,6 +2,7 @@ package BookVendingMachine;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
@@ -96,6 +97,52 @@ public class Reader
 		else
 		{
 			System.out.println("Sorry something went wrong. Book not found.");
+		}
+	}
+	private void deleteBorrowedBook()
+	{
+		try
+		{
+			FileReader file = new FileReader("BookBorrowed.txt");
+			BufferedReader borrowed = new BufferedReader(file);
+			String bookCoded = this.makeRowForFile(this.book);
+			String row;
+			boolean flag = true;
+			while(flag == true && (row = borrowed.readLine()) != null)
+			{
+				if(row.equals(bookCoded) == true)
+				{
+					File inputFile = new File("BookBorrowed.txt");
+					File tempFile = new File("temporaryBorrowed.txt");
+
+					BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+					BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+					String currentLine;
+					boolean firstBookOccurence = false;
+
+					while((currentLine = reader.readLine()) != null)
+					{
+					    if(currentLine.equals(row) && firstBookOccurence == false)
+					    {
+					    	firstBookOccurence = true;
+					    }
+					    else
+					    {
+					    	writer.write(currentLine + System.getProperty("line.separator"));
+					    }
+					}
+					writer.close(); 
+					reader.close();
+					borrowed.close();
+					copyFile();
+					flag = false;
+				}
+			}
+			borrowed.close();
+		}
+		catch(Exception error)
+		{
+			return;
 		}
 	}
 	public void returnBook(Book bookToReturn)
