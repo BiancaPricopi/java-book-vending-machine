@@ -10,14 +10,6 @@ import java.nio.file.Paths;
 public class Antiquarian
 {
 	private Book book = new Book();
-	public void addNewBook(int id, String title, String author, int pages)
-	{
-		this.book.setTitle(title);
-		this.book.setAuthor(author);
-		this.book.setPages(pages);
-		this.book.setId(id);
-		registerBook();
-	}
 	private void registerBook()
 	{
 		try
@@ -66,6 +58,14 @@ public class Antiquarian
 		{
 			System.out.println(error.getMessage());
 		}
+	}
+	public void addNewBook(int id, String title, String author, int pages)
+	{
+		this.book.setTitle(title);
+		this.book.setAuthor(author);
+		this.book.setPages(pages);
+		this.book.setId(id);
+		registerBook();
 	}
 	public void removeBook(Book bookToRemove)
 	{
@@ -118,7 +118,6 @@ public class Antiquarian
 		catch(Exception error)
 		{
 			return;
-		}
-		
+		}	
 	}
 }

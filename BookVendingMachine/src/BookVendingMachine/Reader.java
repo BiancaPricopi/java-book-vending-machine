@@ -211,4 +211,25 @@ public class Reader
 	{
 		System.out.println("The loan period for borrowed book is 31 days.");
 	}
+	public void displayAvailableBooks()
+	{
+		try
+		{
+			FileReader file = new FileReader("BookInventory.txt");
+			BufferedReader display = new BufferedReader(file);
+			String displayBook;
+			while((displayBook = display.readLine()) != null)
+			{
+				String bookInfo[] = displayBook.split("#");
+				for(int i = 0; i < bookInfo.length; i++) 
+				{
+					 System.out.println(bookInfo[i]);
+				}
+			}
+		}
+		catch(Exception error)
+		{
+			System.out.println(error.getMessage());
+		}
+	}
 }
