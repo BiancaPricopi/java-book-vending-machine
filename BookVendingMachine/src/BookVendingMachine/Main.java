@@ -28,7 +28,16 @@ public class Main
 		antiquarianButton.press();
 		antiquarianButton.press();
 		
-		RemoveBook antiquarianRemoveBook = new RemoveBook(antiquarian, book1);
+		Book book3 = new Book();
+		book3.setTitle("1Q84");
+		book3.setAuthor("Haruki Murakami");
+		book3.setPages(1344);
+		book3.setId(3);
+		antiquarianAddBook = new AddBook(antiquarian, book3);
+		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
+		antiquarianButton.press();
+		
+		RemoveBook antiquarianRemoveBook = new RemoveBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianRemoveBook);
 		antiquarianButton.press();
 		
@@ -50,6 +59,14 @@ public class Main
 		readerBorrowBook = new Borrow(reader, padureaNorvegiana);
 		readerButton = new ReaderButton(readerBorrowBook);
 		readerButton.press();
+		
+		Return readerReturnBook = new Return(reader, padureaNorvegiana);
+		readerButton = new ReaderButton(readerReturnBook);
+		readerButton.press();
+		
+		checkLoan check = new checkLoan(reader);
+		readerButton = new ReaderButton(check);
+		readerButton.press();
 
 	}
 	public static void delete()
@@ -57,6 +74,7 @@ public class Main
 		try 
 		{
             Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\BookInventory.txt"));
+            Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\BorrowedBooks.txt"));
         }
         catch (Exception error) 
 		{

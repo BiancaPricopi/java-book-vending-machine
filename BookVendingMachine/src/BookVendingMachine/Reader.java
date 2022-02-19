@@ -134,7 +134,7 @@ public class Reader
 	{
 		try
 		{
-			FileReader file = new FileReader("BookBorrowed.txt");
+			FileReader file = new FileReader("BorrowedBooks.txt");
 			BufferedReader borrowed = new BufferedReader(file);
 			String bookCoded = this.makeRowForFile(this.book);
 			String row;
@@ -143,7 +143,7 @@ public class Reader
 			{
 				if(row.equals(bookCoded) == true)
 				{
-					File inputFile = new File("BookBorrowed.txt");
+					File inputFile = new File("BorrowedBooks.txt");
 					File tempFile = new File("temporaryBorrowed.txt");
 
 					BufferedReader reader = new BufferedReader(new FileReader(inputFile));
@@ -165,7 +165,24 @@ public class Reader
 					writer.close(); 
 					reader.close();
 					borrowed.close();
-					copyFile();
+					
+					if(tempFile.length() == 0)
+					{
+						FileWriter file1 = new FileWriter("BorrowedBooks.txt");
+						file1.close();
+						try 
+						{
+				            Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\temporaryBorrowed.txt"));
+				        }
+				        catch (Exception error) 
+						{
+				            System.out.println(error.getMessage());
+				        }
+					}
+					else
+					{
+						copyFile();
+					}
 					flag = false;
 				}
 			}
@@ -173,7 +190,7 @@ public class Reader
 		}
 		catch(Exception error)
 		{
-			return;
+			System.out.println(error.getMessage());
 		}
 	}
 	public void returnBook(Book bookToReturn)
