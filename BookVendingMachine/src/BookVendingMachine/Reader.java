@@ -59,6 +59,31 @@ public class Reader
 			return false;
 		}
 	}
+	private boolean searchBorrowedBook(Book searchedBook)
+	{
+		try
+		{
+			FileReader file = new FileReader("BorrowedBooks.txt");
+			BufferedReader inventory = new BufferedReader(file);
+			String bookCoded = this.makeRowForFile(searchedBook);
+			String row;
+			while((row = inventory.readLine()) != null)
+			{
+				if(row.equals(bookCoded) == true)
+				{
+					inventory.close();
+					return true;
+				}
+			}
+			inventory.close();
+			return false;
+		}
+		catch(Exception error)
+		{
+			System.out.println(error.getMessage());
+			return false;
+		}
+	}
 	public void borrowBook(Book bookToBorrow)
 	{
 		this.book = bookToBorrow;
@@ -75,12 +100,20 @@ public class Reader
 	}
 	public void returnBook(Book bookToReturn)
 	{
-		
-		
+		this.book = bookToReturn;
+		boolean bookFound = this.searchBorrowedBook(this.book);
+		if(bookFound == true)
+		{
+			System.out.println("You returned [" + this.book.getTitle() + "]");
+			this.deleteBorrowedBook();
+		}
+		else
+		{
+			System.out.println("Sorry something went wrong. Book not found.");
+		}
 	}
 	public void checkTimeToRead()
 	{
 		System.out.println("The loan period for borrowed book is 31 days.");
 	}
-
 }
