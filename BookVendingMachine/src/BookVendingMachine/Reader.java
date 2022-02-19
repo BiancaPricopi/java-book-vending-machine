@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Reader
 {
@@ -97,6 +99,35 @@ public class Reader
 		else
 		{
 			System.out.println("Sorry something went wrong. Book not found.");
+		}
+	}
+	private void copyFile()
+	{
+		try
+		{
+			BufferedWriter copy = new BufferedWriter(
+					new FileWriter("BorrowedBooks.txt"));
+			BufferedReader br = new BufferedReader(
+					new FileReader("temporaryBorrowed.txt"));
+			String row;
+			while((row = br.readLine()) != null)
+			{
+				copy.write(row + "\n");
+			}
+			br.close();
+			copy.close();
+			try 
+			{
+	            Files.deleteIfExists(Paths.get("C:\\Users\\Admin\\Documents\\java\\BookVendingMachine\\temporaryBorrowed.txt"));
+	        }
+	        catch (Exception error) 
+			{
+	            System.out.println(error.getMessage());
+	        }
+		}
+		catch(Exception error)
+		{
+			System.out.println(error.getMessage());
 		}
 	}
 	private void deleteBorrowedBook()
