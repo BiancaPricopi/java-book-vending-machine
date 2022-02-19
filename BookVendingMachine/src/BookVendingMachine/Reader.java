@@ -8,6 +8,17 @@ import java.io.FileWriter;
 public class Reader
 {
 	Book book = new Book();
+	private String makeRowForFile(Book addBook)
+	{
+		String bookCoded = Integer.toString(addBook.getId());
+		bookCoded = bookCoded.concat("#");
+		bookCoded = bookCoded.concat(addBook.getTitle());
+		bookCoded = bookCoded.concat("#");
+		bookCoded = bookCoded.concat(addBook.getAuthor());
+		bookCoded = bookCoded.concat("#");
+		bookCoded = bookCoded.concat(Integer.toString(addBook.getPages()));
+		return bookCoded;
+	}
 	private void writeBorrowedBook()
 	{
 		try
@@ -15,7 +26,8 @@ public class Reader
 			FileWriter file = new FileWriter("BorrowedBooks.txt", true);
 			BufferedWriter borrower = new BufferedWriter(file);
 			String row = makeRowForFile(this.book);
-			borrower.write(row);
+			borrower.write(row + "\n");
+			borrower.close();
 		}
 		catch(Exception error)
 		{
@@ -60,6 +72,7 @@ public class Reader
 		if(bookFound == true)
 		{
 			System.out.println("You borrowed [" + this.book.getTitle() + "].");
+			this.writeBorrowedBook();
 		}
 		else
 		{
