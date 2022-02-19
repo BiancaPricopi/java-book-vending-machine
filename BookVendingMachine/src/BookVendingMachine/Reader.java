@@ -2,13 +2,26 @@ package BookVendingMachine;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
 public class Reader
 {
 	Book book = new Book();
+	private void writeBorrowedBook()
+	{
+		try
+		{
+			FileWriter file = new FileWriter("BorrowedBooks.txt", true);
+			BufferedWriter borrower = new BufferedWriter(file);
+			String row = makeRowForFile(this.book);
+			borrower.write(row);
+		}
+		catch(Exception error)
+		{
+			System.out.println(error.getMessage());
+		}
+	}
 	private boolean searchBookInInventory(Book searchedBook)
 	{
 		try
@@ -27,6 +40,7 @@ public class Reader
 			{
 				if(row.equals(bookCoded) == true)
 				{
+					inventory.close();
 					return true;
 				}
 			}
@@ -52,8 +66,9 @@ public class Reader
 			System.out.println("Sorry something went wrong. Book not found.");
 		}
 	}
-	public void returnBook()
+	public void returnBook(Book bookToReturn)
 	{
+		
 		
 	}
 	public void checkTimeToRead()
