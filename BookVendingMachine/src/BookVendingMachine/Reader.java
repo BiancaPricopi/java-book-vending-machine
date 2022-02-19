@@ -218,14 +218,20 @@ public class Reader
 			FileReader file = new FileReader("BookInventory.txt");
 			BufferedReader display = new BufferedReader(file);
 			String displayBook;
+			System.out.println("------------------------------------------------------");
+			System.out.println("------------------------Books-------------------------");
+			System.out.println("------------------------------------------------------");
 			while((displayBook = display.readLine()) != null)
 			{
 				String bookInfo[] = displayBook.split("#");
 				for(int i = 0; i < bookInfo.length; i++) 
 				{
-					 System.out.println(bookInfo[i]);
+					 System.out.print(bookInfo[i] + " ");
 				}
+				System.out.print("\n");
 			}
+			System.out.println("------------------------------------------------------");
+			System.out.println("------------------------------------------------------");
 		}
 		catch(Exception error)
 		{

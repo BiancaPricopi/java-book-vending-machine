@@ -67,6 +67,10 @@ public class Main
 		checkLoan check = new checkLoan(reader);
 		readerButton = new ReaderButton(check);
 		readerButton.press();
+		
+		DisplayBooks display = new DisplayBooks(reader);
+		readerButton = new ReaderButton(display);
+		readerButton.press();
 
 	}
 	public static void delete()
