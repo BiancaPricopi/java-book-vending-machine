@@ -87,20 +87,6 @@ public class Reader
 			return false;
 		}
 	}
-	public void borrowBook(Book bookToBorrow)
-	{
-		this.book = bookToBorrow;
-		boolean bookFound = searchBookInInventory(this.book);
-		if(bookFound == true)
-		{
-			System.out.println("You borrowed [" + this.book.getTitle() + "].");
-			this.writeBorrowedBook();
-		}
-		else
-		{
-			System.out.println("Sorry something went wrong. Book not found.");
-		}
-	}
 	private void copyFile()
 	{
 		try
@@ -191,6 +177,20 @@ public class Reader
 		catch(Exception error)
 		{
 			System.out.println(error.getMessage());
+		}
+	}
+	public void borrowBook(Book bookToBorrow)
+	{
+		this.book = bookToBorrow;
+		boolean bookFound = searchBookInInventory(this.book);
+		if(bookFound == true)
+		{
+			System.out.println("You borrowed [" + this.book.getTitle() + "].");
+			this.writeBorrowedBook();
+		}
+		else
+		{
+			System.out.println("Sorry something went wrong. Book not found.");
 		}
 	}
 	public void returnBook(Book bookToReturn)
