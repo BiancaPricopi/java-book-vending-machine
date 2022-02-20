@@ -9,11 +9,7 @@ public class Main
 	{
 		delete();
 		Antiquarian antiquarian = new Antiquarian();
-		Book book1 = new Book();
-		book1.setTitle("Cronica pasarii arc");
-		book1.setAuthor("Haruki Murakami");
-		book1.setPages(688);
-		book1.setId(1);
+		Book book1 = createBook(1, "Cronica pasarii arc", "Haruki Murakami", 688);
 		AddBook antiquarianAddBook = new AddBook(antiquarian, book1);
 		AntiquarianButton antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
@@ -72,6 +68,16 @@ public class Main
 		readerButton = new ReaderButton(display);
 		readerButton.press();
 
+	}
+	public static Book createBook(int id, String title, String author, int pages)
+	{
+		Book newBook = new Book();
+		newBook.setId(id);
+		newBook.setTitle(title);
+		newBook.setAuthor(author);
+		newBook.setPages(pages);
+		
+		return newBook;
 	}
 	public static void delete()
 	{
