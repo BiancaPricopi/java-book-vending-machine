@@ -29,6 +29,10 @@ public class Main
 		antiquarianButton = new AntiquarianButton(antiquarianRemoveBook);
 		antiquarianButton.press();
 		
+		antiquarianAddBook = new AddBook(antiquarian, book2);
+		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
+		antiquarianButton.press();
+		
 		Reader reader = vendingMachineControl.getReader();
 		Book borrow = createBook(1, "Cronica pasarii arc", "Haruki Murakami", 688);
 		Borrow readerBorrowBook = new Borrow(reader, borrow);
