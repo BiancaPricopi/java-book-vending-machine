@@ -10,7 +10,7 @@ public class Main
 		delete();
 		Antiquarian antiquarian = new Antiquarian();
 		Book book1 = createBook(1, "Cronica pasarii arc", "Haruki Murakami", 688);
-		AddBook antiquarianAddBook = new AddBook(antiquarian, book1);
+		AntiquarianCommand antiquarianAddBook = new AddBook(antiquarian, book1);
 		AntiquarianButton antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
 		

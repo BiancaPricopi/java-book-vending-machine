@@ -10,22 +10,56 @@ import java.nio.file.Paths;
 public class Antiquarian
 {
 	private Book book = new Book();
+	private boolean searchBook(String codedBook)
+	{
+		try
+		{
+			FileReader file = new FileReader("BookInventory.txt");
+			BufferedReader inventory = new BufferedReader(file);
+			String row;
+			while((row = inventory.readLine()) != null)
+			{
+				if(row.equals(codedBook) == true)
+				{
+					inventory.close();
+					return true;
+				}
+			}
+			inventory.close();
+			return false;
+		}
+		catch(Exception error)
+		{
+			return false;
+		}
+	}
 	private void registerBook()
 	{
 		try
 		{
-			FileWriter file = new FileWriter("BookInventory.txt", true);
-			BufferedWriter inventory = new BufferedWriter(file);
-			inventory.write(this.book.getId() + "#");
-			inventory.write(this.book.getTitle() + "#");
-			inventory.write(this.book.getAuthor() + "#");
-			inventory.write(this.book.getPages() + "\n");
+			String bookCoded = Integer.toString(this.book.getId());
+			bookCoded = bookCoded.concat("#");
+			bookCoded = bookCoded.concat(this.book.getTitle());
+			bookCoded = bookCoded.concat("#");
+			bookCoded = bookCoded.concat(this.book.getAuthor());
+			bookCoded = bookCoded.concat("#");
+			bookCoded = bookCoded.concat(Integer.toString(this.book.getPages()));
 			
-			inventory.close();
+			if(this.searchBook(bookCoded) == false)
+			{
+				FileWriter file1 = new FileWriter("BookInventory.txt", true);
+				BufferedWriter inventory = new BufferedWriter(file1);
+				inventory.write(this.book.getId() + "#");
+				inventory.write(this.book.getTitle() + "#");
+				inventory.write(this.book.getAuthor() + "#");
+				inventory.write(this.book.getPages() + "\n");
+				
+				inventory.close();
+			}
 		}
 		catch(Exception error)
 		{
-			return;
+			System.out.println(error.getMessage());
 		}	
 	}
 	private void copyFile()
