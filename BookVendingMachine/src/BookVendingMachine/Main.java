@@ -14,21 +14,13 @@ public class Main
 		AntiquarianButton antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
 		
-		Book book2 = new Book();
-		book2.setTitle("Padurea Norvegiana");
-		book2.setAuthor("Haruki Murakami");
-		book2.setPages(360);
-		book2.setId(2);
+		Book book2 = createBook(2, "Padurea Norvegiana", "Haruki Murakami", 360);
 		antiquarianAddBook = new AddBook(antiquarian, book2);
 		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
 		antiquarianButton.press();
 		
-		Book book3 = new Book();
-		book3.setTitle("1Q84");
-		book3.setAuthor("Haruki Murakami");
-		book3.setPages(1344);
-		book3.setId(3);
+		Book book3 = createBook(3, "1Q84", "Haruki Murakami", 1344);
 		antiquarianAddBook = new AddBook(antiquarian, book3);
 		antiquarianButton = new AntiquarianButton(antiquarianAddBook);
 		antiquarianButton.press();
@@ -38,20 +30,12 @@ public class Main
 		antiquarianButton.press();
 		
 		Reader reader = vendingMachineControl.getReader();
-		Book borrow = new Book();
-		borrow.setTitle("Cronica pasarii arc");
-		borrow.setAuthor("Haruki Murakami");
-		borrow.setPages(688);
-		borrow.setId(1);
+		Book borrow = createBook(1, "Cronica pasarii arc", "Haruki Murakami", 688);
 		Borrow readerBorrowBook = new Borrow(reader, borrow);
 		ReaderButton readerButton = new ReaderButton(readerBorrowBook);
 		readerButton.press();
 		
-		Book padureaNorvegiana = new Book();
-		padureaNorvegiana.setTitle("Padurea Norvegiana");
-		padureaNorvegiana.setAuthor("Haruki Murakami");
-		padureaNorvegiana.setPages(360);
-		padureaNorvegiana.setId(2);
+		Book padureaNorvegiana = createBook(2, "Padurea Norvegiana", "Haruki Murakami", 360);
 		readerBorrowBook = new Borrow(reader, padureaNorvegiana);
 		readerButton = new ReaderButton(readerBorrowBook);
 		readerButton.press();
